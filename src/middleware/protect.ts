@@ -13,7 +13,7 @@ export const protect: ResolverMiddleware = (next) => {
     if (!authHeader) {
       throw new UNAUTHENTICATED(ERROR_MESSAGES.UNAUTHENTICATED);
     }
-    const token = authHeader.split(' ')[1];
+    const token = authHeader.replace('Bearer ', '');
     if (!token) {
       throw new UNAUTHENTICATED(ERROR_MESSAGES.UNAUTHENTICATED);
     }
